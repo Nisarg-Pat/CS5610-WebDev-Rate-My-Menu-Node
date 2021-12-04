@@ -15,9 +15,14 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/project');
+
 
 app.get('/hello', (req, res) => {
     res.send('Hello World!');
 });
+
+require("./database/users/users-service")(app);
 
 app.listen(process.env.PORT || 4000);
