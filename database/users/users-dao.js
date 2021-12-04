@@ -1,9 +1,11 @@
 const model = require("./users-model");
 
-const findUser = (user) => model.findOne({username: "Nisarg"});
+const findUser = ({username, password}) => model.findOne({username, password});
+
+const findUserByUserName = ({username}) => model.findOne({username});
 
 const createUser = (user) => model.create(user);
 
 module.exports = {
-    findUser, createUser
+    findUser, findUserByUserName, createUser
 }
