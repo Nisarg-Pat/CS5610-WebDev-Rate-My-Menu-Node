@@ -28,4 +28,6 @@ mongoose.connect('mongodb://localhost:27017/project');
 
 require("./database/users/users-service")(app);
 
+require("./data/item-service")(app);
+
 app.listen(process.env.PORT || 4000);
