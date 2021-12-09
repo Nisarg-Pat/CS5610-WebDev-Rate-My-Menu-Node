@@ -27,6 +27,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/project');
 
 require("./database/users/users-service")(app);
+require("./database/restaurant-menu/menu-service")(app);
 
 require("./data/item-service")(app);
 

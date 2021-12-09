@@ -1,4 +1,5 @@
 const dao = require("./users-dao");
+const {addEmptyMenu} = require("../restaurant-menu/menu-dao");
 
 module.exports = (app) => {
     const login = (req, res) => {
