@@ -1,6 +1,4 @@
 const dao = require("./menu-dao");
-const {response} = require("express");
-
 module.exports = (app) => {
 
     const findMenuOfRestaurant = (req, res) => {
