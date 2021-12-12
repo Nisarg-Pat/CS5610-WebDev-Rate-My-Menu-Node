@@ -29,6 +29,7 @@ mongoose.connect('mongodb://localhost:27017/project');
 require("./database/users/users-service")(app);
 require("./database/restaurant-menu/menu-service")(app);
 require("./database/user-food-rating/user-food-rating-service")(app);
+require("./database/user-restaurant-rating/user-restaurant-service")(app);
 
 require("./data/item-service")(app);
 

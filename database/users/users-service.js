@@ -39,10 +39,8 @@ module.exports = (app) => {
     }
 
     const findProfileById = (req, res) => {
-        console.log(req.body)
         dao.findUserById(req.body).then((user) => {
             res.json(user);
-            console.log(user);
         });
     }
 
