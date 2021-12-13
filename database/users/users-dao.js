@@ -8,6 +8,8 @@ const findUserById = ({_id}) => model.findOne({_id});
 
 const createUser = (user) => model.create(user);
 
+const updateUser = (user) => model.updateOne({_id: user._id}, {$set: user})
+
 module.exports = {
-    findUser, findUserByUserName, createUser, findUserById
+    findUser, findUserByUserName, createUser, findUserById, updateUser
 }

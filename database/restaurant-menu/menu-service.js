@@ -19,7 +19,12 @@ module.exports = (app) => {
         })
     }
 
+    const deleteMenuItem = (req, res) => {
+      dao.deleteMenuItem(req.body).then(() => res.sendStatus(200));
+    }
+
     app.post("/api/menu", addMenuItemToRestaurant);
     app.post("/api/restaurant_menu", findMenuOfRestaurant);
-    app.post("/api/item_restaurants", findRestaurantsFromItem)
+    app.post("/api/item_restaurants", findRestaurantsFromItem);
+    app.delete("/api/menu", deleteMenuItem)
 }

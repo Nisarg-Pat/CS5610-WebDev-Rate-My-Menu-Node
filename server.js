@@ -30,6 +30,8 @@ require("./database/users/users-service")(app);
 require("./database/restaurant-menu/menu-service")(app);
 require("./database/user-food-rating/user-food-rating-service")(app);
 require("./database/user-restaurant-rating/user-restaurant-service")(app);
+require("./database/user-food-like/user-food-like-service")(app);
+require("./database/user-restaurant-like/user-restaurant-like-service")(app);
 
 require("./data/item-service")(app);
 

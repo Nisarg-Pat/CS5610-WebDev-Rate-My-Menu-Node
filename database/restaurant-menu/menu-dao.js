@@ -7,6 +7,8 @@ const findRestaurantItem = ({restaurant, foodItem}) => model.findOne({"restauran
 
 const addMenuItemToRestaurant = (menu) => model.create(menu);
 
+const deleteMenuItem = ({restaurant, foodItem}) => model.deleteOne({"restaurant._id": restaurant._id, "foodItem.id": foodItem.id});
+
 module.exports = {
-    findMenuOfRestaurant, addMenuItemToRestaurant, findRestaurantsFromItem, findRestaurantItem
+    findMenuOfRestaurant, addMenuItemToRestaurant, findRestaurantsFromItem, findRestaurantItem, deleteMenuItem
 }
