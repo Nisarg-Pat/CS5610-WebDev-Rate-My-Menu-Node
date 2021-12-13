@@ -6,6 +6,7 @@ const schema = mongoose.Schema(
         role: String,
         name: String,
         description: String,
+        image: String,
         date: Date,
     }, {collection: "users"});
 
