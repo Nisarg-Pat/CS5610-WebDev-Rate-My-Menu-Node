@@ -20,6 +20,16 @@ module.exports = (app) => {
         dao.findLikesOfUser(req.body).then((likes) => res.json(likes))
     }
 
+    const findLike = (req, res) => {
+        dao.findLike(req.body).then((like) => {
+            if(like) {
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(403);
+            }
+        });
+    }
+
     const deleteLike = (req, res) => {
         dao.deleteLike(req.body).then((status) => res.json(status));
     }
@@ -27,5 +37,6 @@ module.exports = (app) => {
     app.post("/api/foodLike", addLike);
     app.post("/api/foodLikesOfFood", findLikesOfFoodItem);
     app.post("/api/foodLikesOfUser", findLikesByUser);
+    app.post("/api/findFoodLike", findLike);
     app.delete("/api/foodLike", deleteLike);
 }

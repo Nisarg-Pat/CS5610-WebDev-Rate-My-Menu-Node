@@ -7,7 +7,10 @@ const schema = mongoose.Schema(
         name: String,
         description: String,
         image: String,
+        email: String,
         date: Date,
+        address: String,
+        waiterRestaurantId: String
     }, {collection: "users"});
 
 module.exports = schema;

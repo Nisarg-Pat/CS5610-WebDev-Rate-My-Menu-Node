@@ -24,8 +24,19 @@ module.exports = (app) => {
         dao.deleteLike(req.body).then((status) => res.json(status));
     }
 
+    const findLike = (req, res) => {
+        dao.findLike(req.body).then((like) => {
+            if(like) {
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(403);
+            }
+        });
+    }
+
     app.post("/api/restaurantLike", addLike);
     app.post("/api/restaurantLikesOfRestaurant", findLikesOfRestaurant);
-    app.post("/api/restaurantLikesOfUser", findLikesByUser)
+    app.post("/api/restaurantLikesOfUser", findLikesByUser);
+    app.post("/api/findRestaurantLike", findLike)
     app.delete("/api/restaurantLike", deleteLike);
 }

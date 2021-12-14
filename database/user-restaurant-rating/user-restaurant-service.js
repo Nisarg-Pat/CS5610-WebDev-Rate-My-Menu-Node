@@ -3,7 +3,6 @@ const dao = require("./user-restaurant-dao");
 module.exports = (app) => {
 
     const addRating = (req, res) => {
-        console.log(req.body);
         dao.addRating(req.body).then((response) => res.sendStatus(200));
     }
 

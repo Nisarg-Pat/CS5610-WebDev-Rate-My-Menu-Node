@@ -18,10 +18,27 @@ module.exports = (app) => {
             if (user) {
                 res.sendStatus(403);
             } else {
-                dao.createUser(req.body).then((user) => {
-                    req.session["profile"] = user;
-                    res.sendStatus(200);
-                });
+                if (req.body.role === "waiter") {
+                    if (req.body.waiterRestaurantId.length !== 24) {
+                        res.sendStatus(404);
+                        return;
+                    }
+                    dao.findUserById({_id: req.body.waiterRestaurantId}).then((restaurant) => {
+                        if (restaurant) {
+                            dao.createUser(req.body).then((user) => {
+                                req.session["profile"] = user;
+                                res.sendStatus(200);
+                            });
+                        } else {
+                            res.sendStatus(404);
+                        }
+                    })
+                } else {
+                    dao.createUser(req.body).then((user) => {
+                        req.session["profile"] = user;
+                        res.sendStatus(200);
+                    });
+                }
             }
         })
     }
@@ -58,10 +75,27 @@ module.exports = (app) => {
         });
     }
 
+    const deleteProfile = (req, res) => {
+        dao.deleteUser(req.body).then(() => {
+            res.send(req.session.destroy());
+        })
+    }
+
+    const getEmployeeList = (req, res) => {
+        dao.findEmployeeList(req.body).then((employees) => res.json(employees))
+    }
+
+    const getUsersList = (req, res) => {
+        dao.getUsersList().then(users => res.json(users))
+    }
+
     app.post("/api/login", login);
     app.post("/api/signup", signup);
     app.post("/api/profile", profile);
     app.post("/api/logout", logout);
     app.post("/api/findProfile", findProfileById);
-    app.put("/api/signup", updateProfile)
+    app.put("/api/profile", updateProfile);
+    app.delete("/api/profile", deleteProfile);
+    app.post("/api/employeeList", getEmployeeList);
+    app.get("/api/profile", getUsersList);
 }
