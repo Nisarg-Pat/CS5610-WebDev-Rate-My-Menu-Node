@@ -15,6 +15,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.get('/hello', (req, res) => {
+    res.send('Hello World!');
+});
+
 const session = require('express-session')
 app.use(session({
                     secret: 'This is my randomly generated string!',
