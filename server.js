@@ -24,6 +24,8 @@ app.use(session({
                 }));
 
 const mongoose = require('mongoose');
+const url = "mongodb+srv://Nisarg_Pat:Nisarg_Pat@cluster0.eenem.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 mongoose.connect('mongodb://localhost:27017/project');
 
 require("./database/users/users-service")(app);

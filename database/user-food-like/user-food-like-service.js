@@ -25,7 +25,7 @@ module.exports = (app) => {
             if(like) {
                 res.sendStatus(200);
             } else {
-                res.sendStatus(403);
+                res.sendStatus(404);
             }
         });
     }
